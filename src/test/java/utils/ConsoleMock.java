@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 @UtilityClass
-public class SystemStreamUtils {
+public class ConsoleMock {
 
     public MockedStreams mockSystemOut() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -22,5 +22,10 @@ public class SystemStreamUtils {
         InputStream originalIn = System.in;
         System.setIn(in);
         return originalIn;
+    }
+
+    public void restoreStreams(InputStream originalIn, PrintStream originalOut) {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
     }
 }

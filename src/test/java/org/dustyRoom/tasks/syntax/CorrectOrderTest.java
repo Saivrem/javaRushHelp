@@ -7,15 +7,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import model.MockedStreams;
-import utils.SystemStreamUtils;
-import utils.TestUtils;
+import utils.ConsoleMock;
+import utils.BaseTest;
 
 import java.io.InputStream;
 import java.util.stream.Stream;
 
-class CorrectOrderTest extends TestUtils {
+class CorrectOrderTest extends BaseTest {
 
-    private static Stream<Arguments> argumentsProvider() {
+    private static Stream<Arguments> testCases() {
         return Stream.of(
                 Arguments.of(
                         Named.of("OneToTen", getResourceInputStream("test_files/correct_order/in.txt")),
@@ -26,15 +26,14 @@ class CorrectOrderTest extends TestUtils {
 
     @SneakyThrows
     @ParameterizedTest
-    @MethodSource("argumentsProvider")
+    @MethodSource("testCases")
     public void correctOrder(InputStream mockedInputStream, String expectedResult) {
-        try (MockedStreams mockedStreams = SystemStreamUtils.mockSystemOut()) {
-            InputStream originalIn = SystemStreamUtils.mockSystemIn(mockedInputStream);
+        try (MockedStreams mockedStreams = ConsoleMock.mockSystemOut()) {
+            InputStream originalIn = ConsoleMock.mockSystemIn(mockedInputStream);
 
             CorrectOrder.solution();
 
-            System.setIn(originalIn);
-            System.setOut(mockedStreams.originalOut());
+            ConsoleMock.restoreStreams(originalIn, mockedStreams.originalOut());
             mockedInputStream.close();
 
             Assertions.assertEquals(mockedStreams.outputStream().toString(), expectedResult);
