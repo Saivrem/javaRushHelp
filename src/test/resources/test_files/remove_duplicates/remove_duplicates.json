@@ -1,0 +1,22 @@
+[
+  {
+    "initial": "a,b,c,a,a,b",
+    "expected": "null,null,c,null,null,null"
+  },
+  {
+    "initial" : "a,a,a,a,a",
+    "expected": "null,null,null,null,null"
+  },
+  {
+    "initial" : "a,b,c,d,e",
+    "expected": "a,b,c,d,e"
+  },
+  {
+    "initial" : "a,a,b,b,c",
+    "expected": "null,null,null,null,c"
+  },
+  {
+    "initial" : "a,b,c,a,b,c",
+    "expected": "null,null,null,null,null,null"
+  }
+]
