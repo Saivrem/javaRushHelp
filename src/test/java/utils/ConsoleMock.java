@@ -1,31 +1,36 @@
 package utils;
 
-import lombok.experimental.UtilityClass;
-import model.MockedStreams;
-
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-@UtilityClass
-public class ConsoleMock {
 
-    public MockedStreams mockSystemOut() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream customPrintStream = new PrintStream(outputStream);
-        PrintStream originalSystemOut = System.out;
-        System.setOut(customPrintStream);
-        return new MockedStreams(outputStream, originalSystemOut, customPrintStream);
+public class ConsoleMock implements AutoCloseable {
+    private final static InputStream originalSystemIn = System.in;
+    private final static PrintStream originalSystemOut = System.out;
+    private PrintStream printStream;
+    private InputStream customSystemIn;
+
+
+    public void mockSystemOut(ByteArrayOutputStream outputStream) {
+        printStream = new PrintStream(outputStream);
+        System.setOut(printStream);
     }
 
-    public InputStream mockSystemIn(InputStream in) {
-        InputStream originalIn = System.in;
+    public void mockSystemIn(InputStream in) {
+        customSystemIn = in;
         System.setIn(in);
-        return originalIn;
     }
 
-    public void restoreStreams(InputStream originalIn, PrintStream originalOut) {
-        System.setIn(originalIn);
-        System.setOut(originalOut);
+    @Override
+    public void close() throws Exception {
+        if (printStream != null) {
+            printStream.close();
+        }
+        if (customSystemIn != null) {
+            customSystemIn.close();
+        }
+        System.setIn(originalSystemIn);
+        System.setOut(originalSystemOut);
     }
 }

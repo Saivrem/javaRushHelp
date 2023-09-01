@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Named;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import model.MockedStreams;
-import utils.ConsoleMock;
 import utils.BaseTest;
+import utils.ConsoleMock;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.stream.Stream;
 
@@ -28,17 +28,15 @@ class CorrectOrderTest extends BaseTest {
     @ParameterizedTest
     @MethodSource("testCases")
     public void correctOrder(InputStream mockedInputStream, String expectedResult) {
-        try (MockedStreams mockedStreams = ConsoleMock.mockSystemOut()) {
-            InputStream originalIn = ConsoleMock.mockSystemIn(mockedInputStream);
-
+        try (ConsoleMock consoleMock = new ConsoleMock()) {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            consoleMock.mockSystemIn(mockedInputStream);
+            consoleMock.mockSystemOut(outputStream);
             CorrectOrder.solution();
 
-            ConsoleMock.restoreStreams(originalIn, mockedStreams.originalOut());
-            mockedInputStream.close();
-
-            Assertions.assertEquals(mockedStreams.outputStream().toString(), expectedResult);
+            Assertions.assertEquals(outputStream.toString(), expectedResult);
             LOG.debug("\nActual: {}\nExpected: {}",
-                    toOneLine(mockedStreams.outputStream().toString(), System.lineSeparator()),
+                    toOneLine(outputStream.toString(), System.lineSeparator()),
                     toOneLine(expectedResult, System.lineSeparator())
             );
         }
