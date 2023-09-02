@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import utils.BaseTest;
+import utils.BaseIT;
 import utils.ConsoleMock;
 
 import java.io.ByteArrayOutputStream;
 import java.util.stream.Stream;
 
-class SearchFileContentTest extends BaseTest {
+class SearchFileContentIT extends BaseIT {
 
     private static Stream<Arguments> testCases() {
         return readTestCases("test_files/search_file_content/test_cases.json")

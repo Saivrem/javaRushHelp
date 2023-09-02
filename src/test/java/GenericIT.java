@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-public class TestSuite {
+public class GenericIT {
 
     @Test
     public void doNothing() {

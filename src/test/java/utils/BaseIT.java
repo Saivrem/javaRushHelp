@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-public class BaseTest {
+public class BaseIT {
     private final static ObjectMapper objectMapper = new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     protected static Logger LOG = log;
@@ -51,7 +51,7 @@ public class BaseTest {
     }
 
     protected static InputStream getResourceInputStream(String path) {
-        return BaseTest.class.getClassLoader().getResourceAsStream(path);
+        return BaseIT.class.getClassLoader().getResourceAsStream(path);
     }
 
     /**

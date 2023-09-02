@@ -4,13 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import utils.BaseTest;
+import utils.BaseIT;
 
 import java.util.stream.Stream;
 
 import static java.util.Arrays.copyOf;
 
-class RemoveSameLinesTest extends BaseTest {
+class RemoveSameLinesIT extends BaseIT {
 
     private static Stream<Arguments> testCases() {
         return readTestCases("test_files/remove_duplicates/test_cases.json")
