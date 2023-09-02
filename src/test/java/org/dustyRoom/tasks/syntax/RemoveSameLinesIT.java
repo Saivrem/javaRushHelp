@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import utils.BaseIT;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.copyOf;
@@ -23,6 +24,7 @@ class RemoveSameLinesIT extends BaseIT {
     public void removeSameStrings(String[] initialState, String[] endState) {
         String[] testArray = copyOf(initialState, initialState.length);
         RemoveSameLines.solution(testArray);
-        Assertions.assertArrayEquals(testArray, endState);
+        LOG.debug("student: {}", Arrays.toString(testArray));
+        Assertions.assertArrayEquals(endState, testArray);
     }
 }
