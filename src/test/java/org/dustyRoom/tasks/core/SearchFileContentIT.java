@@ -19,7 +19,6 @@ class SearchFileContentIT extends BaseIT {
                 .map(node -> ofString(node, "id", "expected"));
     }
 
-
     @SneakyThrows
     @ParameterizedTest
     @MethodSource("testCases")
