@@ -31,7 +31,6 @@ class LeastFrequentBytesTest extends BaseIT {
             consoleMock.mockSystemOut(outputStream);
             LeastFrequentBytes.solution();
             Assertions.assertEquals(outputStream.toString().trim(), expectedResult);
-            consoleMock.close();
             printCharsMap(outputStream);
         }
     }

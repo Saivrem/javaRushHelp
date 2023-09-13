@@ -1,4 +1,4 @@
-package org.dustyRoom.examples.polymorphism;
+package org.dustyRoom.examples.office;
 
 public interface Employee {
     void doJob();
