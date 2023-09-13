@@ -9,7 +9,6 @@ public class Plumber implements Employee {
     }
 
     public void plumberJob() {
-        System.out.println("this is a Plumber department specific job");
-        doJob();
+        System.out.println("This is a Plumber department specific job");
     }
 }

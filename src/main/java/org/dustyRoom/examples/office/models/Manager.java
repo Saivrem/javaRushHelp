@@ -9,7 +9,6 @@ public class Manager implements Employee {
     }
 
     public void managerJob() {
-        System.out.println("this is a Manager department specific job");
-        doJob();
+        System.out.println("This is a Manager department specific job");
     }
 }

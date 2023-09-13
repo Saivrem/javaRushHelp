@@ -10,6 +10,5 @@ public class SecurityOfficer implements Employee {
 
     public void doHighSecurityJob() {
         System.out.println("This is a SecurityOfficer department specific job");
-        doJob();
     }
 }
