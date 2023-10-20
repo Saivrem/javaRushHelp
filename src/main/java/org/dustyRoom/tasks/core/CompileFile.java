@@ -2,6 +2,7 @@ package org.dustyRoom.tasks.core;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,7 +29,9 @@ public class CompileFile {
 
     private final static String END = "end";
 
-    public static void main(String[] args) {
+    private final static String suffix = ".part";
+
+    public static void solution() {
         mySolution();
     }
 
@@ -44,11 +47,11 @@ public class CompileFile {
         }
 
         String fileName = fileParts.get(0);
-        fileName = fileName.substring(0, fileName.indexOf(".part"));
+        fileName = fileName.substring(0, fileName.lastIndexOf(".part"));
 
         try (OutputStream os = new FileOutputStream(fileName)) {
             fileParts.stream()
-                    .sorted()
+                    .sorted(Comparator.comparingInt(CompileFile::extractPartNumber))
                     .forEach(part -> write(part, os));
         } catch (IOException ignore) {
         }
@@ -63,5 +66,9 @@ public class CompileFile {
             }
         } catch (IOException ignored) {
         }
+    }
+
+    private static Integer extractPartNumber(String file) {
+        return Integer.parseInt(file.substring(file.lastIndexOf(suffix) + suffix.length()));
     }
 }
