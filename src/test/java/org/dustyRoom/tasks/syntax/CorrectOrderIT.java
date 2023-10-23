@@ -28,7 +28,6 @@ class CorrectOrderIT extends BaseIT {
     @ParameterizedTest
     @MethodSource("testCases")
     public void correctOrder(InputStream mockedInputStream, String expectedResult) {
-        Assertions.fail("Fail on purpose");
         try (ConsoleMock consoleMock = new ConsoleMock()) {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             consoleMock.mockSystemIn(mockedInputStream);
