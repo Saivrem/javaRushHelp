@@ -22,6 +22,10 @@ public class BaseIT {
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     protected static Logger LOG = log;
 
+    static {
+        System.setProperty("file.encoding", "UTF-8");
+    }
+
     /**
      * Split text value of JsonNode with passed delimiter, can convert string values of null into actual nulls
      *

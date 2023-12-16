@@ -9,6 +9,13 @@ repositories {
     mavenCentral()
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     def lombokVersion = '1.18.28'
     def junitVersion = '5.8.2'
@@ -30,6 +37,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'file.encoding', 'UTF-8'
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
     }

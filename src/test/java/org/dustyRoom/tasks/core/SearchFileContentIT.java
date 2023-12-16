@@ -28,7 +28,7 @@ class SearchFileContentIT extends BaseIT {
             consoleMock.mockSystemOut(outputStream);
             consoleMock.mockSystemIn(getResourceInputStream("test_files/search_file_content/system_in.txt"));
             SearchFileContent.solution(id);
-            Assertions.assertEquals(expected, outputStream.toString());
+            Assertions.assertEquals(expected, outputStream.toString().trim());
         }
     }
 }

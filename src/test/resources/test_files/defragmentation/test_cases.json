@@ -1,0 +1,18 @@
+[
+  {
+    "memory": "object15,null,null,object32,null,null,object2,null,null,object4",
+    "expected": "object15,object32,object2,object4,null,null,null,null,null,null"
+  },
+  {
+    "memory": "null,null,null",
+    "expected": "null,null,null"
+  },
+  {
+    "memory": "null,b,a",
+    "expected": "b,a,null"
+  },
+  {
+    "memory": "a,b,null",
+    "expected": "a,b,null"
+  }
+]
