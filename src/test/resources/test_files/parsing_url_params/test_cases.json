@@ -1,0 +1,18 @@
+[
+  {
+    "url": "http://javarush.ru/alpha/index.html?lvl=15&view&name=Amigo",
+    "output": "lvl view name \n"
+  },
+  {
+    "url": "http://javarush.ru/alpha/index.html?obj=3.14&name=Amigo",
+    "output": "obj name \ndouble: 3.14\n"
+  },
+  {
+    "url": "http://javarush.ru/alpha/index.html?obj=testString&name=Amigo",
+    "output": "obj name \nString: testString\n"
+  },
+  {
+    "url": "http://javarush.ru/alpha/index.html?obj=3.14&obj=testString&name=Amigo",
+    "output": "obj obj name \ndouble: 3.14\nString: testString\n"
+  }
+]
