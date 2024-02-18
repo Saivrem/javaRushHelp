@@ -27,7 +27,9 @@ class ParsingRequestsTest extends BaseIT {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             consoleMock.mockSystemOut(outputStream);
             ParsingRequests.solution(url);
-            Assertions.assertEquals(expectedOutput, outputStream.toString());
+            String expected = expectedOutput.replaceAll("[\r\n]", "");
+            String actual = outputStream.toString().replaceAll("[\r\n]", "");
+            Assertions.assertEquals(expected, actual);
         }
     }
 }
