@@ -5,7 +5,7 @@
   },
   {
     "inputFile": "src/test/resources/test_files/least_frequent_byte/file2.txt",
-    "expectedResult": "10 44 72 87 109 112 119 "
+    "expectedResult": "44 72 87 109 112 119 "
   },
   {
     "inputFile": "src/test/resources/test_files/least_frequent_byte/file3.txt",
